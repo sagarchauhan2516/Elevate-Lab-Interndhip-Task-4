@@ -1,0 +1,21 @@
+Task 8 - Setup and Use a Firewall on Windows/Linux
+ Objective: Configure and test basic firewall rules to allow or block traffic.
+ Tools:  Windows Firewall / UFW (Uncomplicated Firewall) on Linux.
+ Deliverables: Screenshot/configuration file showing firewall rules applied
+
+A firewall acts as a security guard for a network or computer, examining incoming and outgoing network traffic against a set of predefined rules to determine whether to allow or block specific data packets.
+
+Here's how it generally filters traffic:
+
+*Rule Set: Firewalls operate based on a configured set of rules. Each rule specifies criteria such as source IP address, destination IP address, source port, destination port, protocol (TCP, UDP, ICMP, etc.), and sometimes even application-level information.
+
+*Packet Inspection: When a data packet arrives at the firewall, the firewall inspects its headers (and sometimes its content, in the case of application-layer firewalls).
+Rule Matching: The firewall compares the packet's characteristics against its rule set, usually in a top-down order. The first rule that matches the packet's criteria is applied.
+
+*Action (Allow/Deny/Reject):
+Allow (Accept): If a rule matches and specifies "allow," the packet is permitted to pass through.
+Deny (Drop): If a rule matches and specifies "deny" or "drop," the packet is silently discarded. The sender receives no notification.
+Reject: Similar to deny, but the sender receives an error message (e.g., ICMP Destination Unreachable), indicating that the connection was actively refused.
+Default Policy: If no specific rule matches a packet, the firewall applies a default policy, which is typically to "deny all" for incoming traffic (more secure) and "allow all" for outgoing traffic (common for basic user firewalls). This "default deny" principle is crucial for security.
+
+*Stateful Inspection: Modern firewalls often use stateful inspection. They keep track of the "state" of active connections (e.g., a connection initiated from inside your network to an external server). Once an outgoing connection is established, the firewall automatically allows the return traffic for that connection, even if there isn't an explicit "allow incoming" rule for it, because it's part of an already established, legitimate session. This is why you usually only need to allow inbound connections specifically
